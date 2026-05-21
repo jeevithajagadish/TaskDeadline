@@ -2,6 +2,7 @@ import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DeadlineTimerService } from '../../services/deadline-timer.service';
+import { DeadlineTimerResponse } from '../../models/deadline-response.model';
 
 @Component({
   selector: 'app-deadline-timer',
@@ -11,7 +12,7 @@ import { DeadlineTimerService } from '../../services/deadline-timer.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DeadlineTimerComponent {
-  countdown$: Observable<number>;
+  countdown$: Observable<DeadlineTimerResponse>;
 
   constructor(private deadlineTimerService: DeadlineTimerService) {
     this.countdown$ = this.deadlineTimerService.getTimeLeftInSeconds();

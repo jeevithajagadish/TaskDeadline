@@ -1,3 +1,9 @@
 <div class="timer-container">
-    Seconds left to deadline: {{countdown$ | async}}
+   @if (countdown$ | async; as countdown) {
+        @if (countdown.secondsLeft === -1 ) {
+            <span class="error-message">Error occurred. Please try again later.</span>
+   } @else { 
+        <span>Seconds left to deadline: {{ countdown.secondsLeft }}</span>
+    }
+}
 </div>
